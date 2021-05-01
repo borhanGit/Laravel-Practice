@@ -29,6 +29,7 @@ class FrontController extends Controller
         ]);
 
         $photo = $request->file('photo');
+        
         $filename = Str::random(10).'.'.$photo->getClientOriginalExtension();
 
         if($validation->fails())
@@ -39,7 +40,7 @@ class FrontController extends Controller
                 $photo->storeAs('image',$filename);
 
             }
-            session()->flash('message','registration succesfully!');
+          $this->setSuccesMessage('registraion successfully');
             return redirect()->back();
         
     }
